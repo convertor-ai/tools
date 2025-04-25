@@ -296,11 +296,72 @@
     </div>
 </body>
 </html>       <!-- PDF Tools -->
-            <div class="tool-card">
-                <i class="fas fa-file-pdf tool-icon"></i>
-                <h3>PDF Converter</h3>
-                <p>Convert PDF to Word, Excel, PPT, and images</p>
-            </div>
+           <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Converter Tool</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Tool card styling */
+        .tool-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            max-width: 200px;
+            margin: 10px;
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .tool-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .tool-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Link styling */
+        .tool-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Hover effects */
+        .tool-link:hover .tool-card {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .tool-link:active .tool-card {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- PDF Converter Tool Card with Hyperlink -->
+    <a href="pdf-converter" class="tool-link" target="_blank">
+        <div class="tool-card">
+            <i class="fas fa-file-pdf tool-icon"></i>
+            <h3>PDF Converter</h3>
+            <p>Convert PDF to Word, Excel, PPT, and images</p>
+        </div>
+    </a>
+</body>
+</html>
             <div class="tool-card">
                 <i class="fas fa-lock tool-icon"></i>
                 <h3>PDF Protect</h3>

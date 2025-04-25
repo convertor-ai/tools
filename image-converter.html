@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Online Image Converter - Optimize and Convert images to various formats with different compression levels">
+    <meta name="keywords" content="image converter, image optimization, compress images, online image tools">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+    
+    <title>Image Converter Pro - Optimize & Convert Images Online</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .converter-section {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .main-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .ad-section {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .conversion-controls {
+            margin: 2rem 0;
+        }
+
+        .file-input-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-file-input {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .custom-file-input:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        #imageInput {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .quality-selector {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .quality-selector:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #preview {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 2rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        .convert-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .convert-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        .ad-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .converter-section {
+                grid-template-columns: 1fr;
+            }
+
+            .ad-section {
+                position: static;
+                order: -1;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+                border-radius: 12px;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .convert-btn {
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Image Converter Pro</h1>
+            <p>Optimize and convert images online with different compression levels</p>
+        </header>
+
+        <!-- Top Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="converter-section">
+            <main class="main-content">
+                <div class="conversion-controls">
+                    <div class="file-input-container">
+                        <input type="file" id="imageInput" accept="image/*">
+                        <label class="custom-file-input" for="imageInput">
+                            📁 Choose Image
+                        </label>
+                    </div>
+
+                    <select id="conversionLevel" class="quality-selector">
+                        <option value="0.1">Low Compression (Best Quality)</option>
+                        <option value="0.5" selected>Medium Compression (Balanced)</option>
+                        <option value="0.9">High Compression (Small File Size)</option>
+                    </select>
+
+                    <button class="convert-btn" onclick="convertImage()">
+                        🚀 Convert Now
+                    </button>
+
+                    <img id="preview" alt="Image preview" style="display: none;">
+                </div>
+            </main>
+
+            <aside class="ad-section">
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Same JavaScript functionality as previous version
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        const conversionLevel = document.getElementById('conversionLevel');
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.style.display = 'block';
+                    preview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function convertImage() {
+            const quality = parseFloat(conversionLevel.value);
+            const file = imageInput.files[0];
+            
+            if (!file) {
+                alert('Please select an image first!');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    
+                    canvas.toBlob(function(blob) {
+                        const convertedImage = new File([blob], `converted_${file.name}`, {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+                        
+                        const url = URL.createObjectURL(convertedImage);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = convertedImage.name;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    }, 'image/jpeg', quality);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

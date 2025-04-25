@@ -362,11 +362,66 @@
     </a>
 </body>
 </html>
-            <div class="tool-card">
-                <i class="fas fa-lock tool-icon"></i>
-                <h3>PDF Protect</h3>
-                <p>Add passwords and permissions to PDFs</p>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Card with Link</title>
+    <!-- Font Awesome for the lock icon (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Styling */
+        .tool-link {
+            text-decoration: none; /* Removes underline */
+            color: inherit; /* Inherits text color */
+            display: inline-block; /* Proper spacing */
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #4a6bff;
+        }
+
+        .tool-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .tool-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML with Hyperlink -->
+    <a href="pdf-protect" class="tool-link">
+        <div class="tool-card">
+            <i class="fas fa-lock tool-icon"></i>
+            <h3>PDF Protect</h3>
+            <p>Add passwords and permissions to PDFs</p>
+        </div>
+    </a>
+</body>
+</html>
         </div>
     </section>
 

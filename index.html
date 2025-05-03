@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FileToolsPro - Online Image & PDF Tools</title>
+    <meta name="description" content="Free online tools for image and PDF conversion, compression, and editing. Convert JPG, PNG, PDF to Word, Excel and more. No installation needed.">
+    <meta name="keywords" content="PDF converter, image converter, file tools, online tools, PDF to Word, JPG to PNG, compress PDF, image compressor">
+    <meta name="author" content="FileToolsPro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="FileToolsPro - Online Image & PDF Tools">
+    <meta property="og:description" content="Free online tools for image and PDF conversion, compression, and editing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://filetoolspro.com">
+    <meta property="og:image" content="https://filetoolspro.com/images/og-image.jpg">
+    <link rel="canonical" href="https://filetoolspro.com">
+    <title>FileToolsPro - Online Image & PDF Conversion Tools | Free File Utilities</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
     <style>
         * {
             margin: 0;
@@ -87,6 +98,23 @@
             transform: translateY(-3px);
         }
 
+        /* Ad Container */
+        .ad-container {
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
         /* Tools Section */
         .tools-section {
             padding: 4rem 5%;
@@ -95,6 +123,12 @@
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
+        }
+
+        .category-title {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            color: #6366f1;
         }
 
         .tools-grid {
@@ -110,16 +144,23 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s;
+            height: 100%;
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .tool-icon {
             font-size: 2.5rem;
             color: #6366f1;
             margin-bottom: 1rem;
+        }
+
+        .tool-link {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* Features Section */
@@ -152,6 +193,11 @@
             gap: 2rem;
         }
 
+        /* Schema Markup (hidden) */
+        .schema-markup {
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -173,248 +219,106 @@
     <nav>
         <div class="logo">FileToolsPro</div>
         <div class="nav-links">
-            <a href="https://convertor-ai.github.io/tools/">Home</a>
-            <a href="https://convertor-ai.github.io/tools/image-converter.html">Tools</a>
+            <a href="#home">Home</a>
+            <a href="#tools">Tools</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <h1>Transform Your Files with Ease</h1>
         <p>Convert, compress, and edit images & PDFs online - 100% free!</p>
         <button class="cta-button">Get Started Now</button>
     </section>
 
+    <!-- Top Ad Banner -->
+
     <!-- Tools Section -->
-    <section class="tools-section">
-        <h2 class="section-title">Popular Tools</h2>
+    <section class="tools-section" id="tools">
+        <h2 class="section-title">Our Powerful Tools</h2>
+        
+        <!-- Image Tools Section -->
+        <h3 class="category-title">Image Tools</h3>
         <div class="tools-grid">
-            <!-- Image Tools -->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Tools</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* CSS Styles */
-        .tools-container {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .tool-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.3s ease;
-            flex: 1 1 250px;
-            min-width: 250px;
-            max-width: 320px;
-        }
-
-        .tool-card-link:hover {
-            transform: translateY(-5px);
-        }
-
-        .tool-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            height: 100%;
-        }
-
-        .tool-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border-color: #c0c0c0;
-        }
-
-        .tool-icon {
-            font-size: 2.5rem;
-            color: #2196F3;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .tool-card h3 {
-            margin: 0.5rem 0;
-            font-size: 1.25rem;
-            color: #333333;
-        }
-
-        .tool-card p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666666;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .tools-container {
-                padding: 1rem;
-                gap: 1rem;
-            }
+            <!-- Image Converter -->
+            <a href="image-converter.html" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-file-image tool-icon"></i>
+                    <h3>Image Converter</h3>
+                    <p>Convert between JPG, PNG, WEBP, and more formats</p>
+                </div>
+            </a>
             
-            .tool-card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="tools-container">
-        <a href="image-converter.html" class="tool-card-link">
-            <div class="tool-card">
-                <i class="fas fa-file-image tool-icon"></i>
-                <h3>Image Converter</h3>
-                <p>Convert between JPG, PNG, WEBP, and more</p>
-            </div>
-        </a>
-    </div>
-</body>
-</html>       <!-- PDF Tools -->
-           <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Converter Tool</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Tool card styling */
-        .tool-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            max-width: 200px;
-            margin: 10px;
-        }
-
-        .tool-icon {
-            font-size: 2rem;
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .tool-card h3 {
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .tool-card p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* Link styling */
-        .tool-link {
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        /* Hover effects */
-        .tool-link:hover .tool-card {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .tool-link:active .tool-card {
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body>
-    <!-- PDF Converter Tool Card with Hyperlink -->
-    <a href="pdf-converter" class="tool-link" target="_blank">
-        <div class="tool-card">
-            <i class="fas fa-file-pdf tool-icon"></i>
-            <h3>PDF Converter</h3>
-            <p>Convert PDF to Word, Excel, PPT, and images</p>
+            <!-- Image Compressor -->
+            <a href="img-compression.html" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-compress-alt tool-icon"></i>
+                    <h3>Image Compressor</h3>
+                    <p>Reduce image size without significant quality loss</p>
+                </div>
+            </a>
+            
+            <!-- Image to PDF -->
+            <a href="img-to-pdf-converter" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-file-pdf tool-icon"></i>
+                    <h3>Image to PDF</h3>
+                    <p>Convert multiple images to a single PDF document</p>
+                </div>
+            </a>
         </div>
-    </a>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tool Card with Link</title>
-    <!-- Font Awesome for the lock icon (optional) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* CSS Styling */
-        .tool-link {
-            text-decoration: none; /* Removes underline */
-            color: inherit; /* Inherits text color */
-            display: inline-block; /* Proper spacing */
-        }
 
-        .tool-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .tool-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform: translateY(-3px);
-        }
-
-        .tool-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #4a6bff;
-        }
-
-        .tool-card h3 {
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .tool-card p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <!-- HTML with Hyperlink -->
-    <a href="pdf-protect" class="tool-link">
-        <div class="tool-card">
-            <i class="fas fa-lock tool-icon"></i>
-            <h3>PDF Protect</h3>
-            <p>Add passwords and permissions to PDFs</p>
+        <!-- Middle Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your AdSense ad unit code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
-    </a>
-</body>
-</html>
+        
+        <!-- PDF Tools Section -->
+        <h3 class="category-title">PDF Tools</h3>
+        <div class="tools-grid">
+            <!-- PDF Converter -->
+            <a href="pdf-converter" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-file-pdf tool-icon"></i>
+                    <h3>PDF Converter</h3>
+                    <p>Convert PDF to Word, Excel, PPT, and image formats</p>
+                </div>
+            </a>
+            
+            <!-- PDF Protect -->
+            <a href="pdf-protect" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-lock tool-icon"></i>
+                    <h3>PDF Protect</h3>
+                    <p>Add passwords and permissions to secure your PDFs</p>
+                </div>
+            </a>
+            
+            <!-- PDF Split/Merge -->
+            <a href="pdf-split-merge" class="tool-link">
+                <div class="tool-card">
+                    <i class="fas fa-cut tool-icon"></i>
+                    <h3>PDF Split/Merge</h3>
+                    <p>Split PDFs into multiple files or merge multiple PDFs</p>
+                </div>
+            </a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features-section">
+    <section class="features-section" id="about">
         <h2 class="section-title">Why Choose Us?</h2>
         <div class="features-grid">
             <div class="feature-card">
@@ -435,8 +339,23 @@
         </div>
     </section>
 
+    <!-- Bottom Ad Banner -->
+    <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <!-- Replace with your AdSense ad unit code -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-content">
             <div>
                 <h4>FileToolsPro</h4>
@@ -444,16 +363,48 @@
             </div>
             <div>
                 <h4>Quick Links</h4>
-                <p>About Us</p>
-                <p>Tools</p>
-                <p>Contact</p>
+                <a href="#home">Home</a>
+                <a href="#tools">Tools</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
             <div>
                 <h4>Legal</h4>
-                <p>Privacy Policy</p>
-                <p>Terms of Service</p>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
             </div>
         </div>
     </footer>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json" class="schema-markup">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FileToolsPro",
+      "url": "https://filetoolspro.com",
+      "description": "Free online tools for image and PDF conversion, compression, and editing",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "FileToolsPro"
+      }
+    }
+    </script>
+
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </body>
 </html>

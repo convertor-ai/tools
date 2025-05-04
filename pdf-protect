@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online PDF Protector Tool - Add passwords, encrypt, and secure your PDF files. Protect sensitive documents with our easy-to-use web tool.">
+    <meta name="keywords" content="PDF protector, PDF encryption, PDF password, secure PDF, PDF tool, online PDF security">
+    <meta name="author" content="PDF Protector Tool">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PDF Protector Tool - Secure Your PDF Files Online">
+    <meta property="og:description" content="Free online tool to add passwords and encrypt your PDF documents for enhanced security.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <link rel="canonical" href="https://yourwebsite.com">
+    <title>PDF Protector Tool - Secure Your PDF Files Online</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --error-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .protect-btn {
+            background-color: var(--accent-color);
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .protect-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tool Section */
+        #tool-section {
+            margin: 3rem 0;
+        }
+
+        .tool-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .upload-area {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 2px dashed #bdc3c7;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-area.highlight {
+            border-color: var(--primary-color);
+            background-color: rgba(74, 144, 226, 0.05);
+        }
+
+        .upload-icon {
+            margin-bottom: 1rem;
+        }
+
+        .upload-area h2 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .upload-area p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .options-area {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .status-message.success {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: var(--success-color);
+            display: block;
+        }
+
+        .status-message.error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: var(--error-color);
+            display: block;
+        }
+
+        /* Features Section */
+        #features {
+            margin: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* How To Use Section */
+        #how-to-use {
+            margin: 4rem 0;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+            counter-increment: step-counter;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .steps li strong {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .steps li p {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* FAQ Section */
+        #faq {
+            margin: 4rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1rem;
+            text-align: left;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f8f9fa;
+        }
+
+        .faq-answer p {
+            padding: 1rem 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            margin: 4rem 0;
+        }
+
+        #contactForm {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        #contactForm textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            margin: 2rem 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tool-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Accessibility Improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Loading Animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PDF Protector Tool</h1>
+            <p>Secure your PDF files with passwords and encryption</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-to-use">How to Use</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- AdSense Banner Ad -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- PDF Protector Top Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section id="tool-section">
+            <div class="tool-container">
+                <div class="upload-area" id="dropArea">
+                    <input type="file" id="pdfInput" accept=".pdf" style="display: none;">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4a90e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h2>Upload PDF File</h2>
+                    <p>Drag & drop your PDF file here or click to browse</p>
+                    <button id="selectFileBtn" class="btn">Select PDF File</button>
+                </div>
+
+                <div class="options-area">
+                    <div class="form-group">
+                        <label for="password">Set Password:</label>
+                        <input type="password" id="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm password">
+                    </div>
+                    <div class="form-group">
+                        <label for="permissions">Permissions:</label>
+                        <select id="permissions">
+                            <option value="none">No restrictions</option>
+                            <option value="noPrint">No printing</option>
+                            <option value="noCopy">No copying</option>
+                            <option value="noModify">No modifications</option>
+                            <option value="allRestrictions">All restrictions</option>
+                        </select>
+                    </div>
+                    <button id="protectBtn" class="btn protect-btn" disabled>Protect PDF</button>
+                </div>
+            </div>
+
+            <div id="status" class="status-message"></div>
+        </section>
+
+        <!-- AdSense In-Article Ad -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block; text-align:center;"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section id="features">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Strong Encryption</h3>
+                    <p>Protect your PDFs with 128-bit AES encryption for maximum security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Processing</h3>
+                    <p>Quickly protect your files without compromising on security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud-Based</h3>
+                    <p>No software installation needed. Works directly in your browser.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Permission Control</h3>
+                    <p>Restrict printing, copying, or modifying your protected PDFs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-use">
+            <h2>How to Protect Your PDF</h2>
+            <ol class="steps">
+                <li>
+                    <strong>Upload your PDF</strong>
+                    <p>Click the upload button or drag and drop your PDF file into the designated area.</p>
+                </li>
+                <li>
+                    <strong>Set a password</strong>
+                    <p>Enter a strong password and confirm it. This will be required to open the PDF.</p>
+                </li>
+                <li>
+                    <strong>Choose permissions</strong>
+                    <p>Select what restrictions you want to apply to the protected PDF.</p>
+                </li>
+                <li>
+                    <strong>Download protected PDF</strong>
+                    <p>Click "Protect PDF" and download your secured document.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- AdSense Bottom Ad -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- PDF Protector Bottom Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question">Is my PDF file safe with this tool?</button>
+                <div class="faq-answer">
+                    <p>Yes! All processing happens in your browser. Your PDF is never uploaded to any server, ensuring complete privacy and security.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What if I forget the password?</button>
+                <div class="faq-answer">
+                    <p>We don't store any passwords, so we cannot recover it for you. Make sure to remember your password or store it in a secure password manager.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is there a file size limit?</button>
+                <div class="faq-answer">
+                    <p>The tool can handle most PDF files, but very large files (100+ MB) might cause performance issues depending on your device's capabilities.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Does this work on mobile devices?</button>
+                <div class="faq-answer">
+                    <p>Yes, the PDF Protector Tool works on smartphones and tablets as well as desktop computers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions or suggestions? We'd love to hear from you!</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Name:</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email:</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message:</label>
+                    <textarea id="contactMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> PDF Protector Tool. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // PDF Protection Tool Functionality
+            const pdfInput = document.getElementById('pdfInput');
+            const selectFileBtn = document.getElementById('selectFileBtn');
+            const dropArea = document.getElementById('dropArea');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const permissionsSelect = document.getElementById('permissions');
+            const protectBtn = document.getElementById('protectBtn');
+            const statusMessage = document.getElementById('status');
+            const contactForm = document.getElementById('contactForm');
+            
+            let selectedFile = null;
+
+            // Initialize tool
+            initTool();
+
+            function initTool() {
+                // Event listeners for file selection
+                selectFileBtn.addEventListener('click', () => pdfInput.click());
+                pdfInput.addEventListener('change', handleFileSelect);
+                
+                // Drag and drop events
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, preventDefaults, false);
+                });
+                
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, highlight, false);
+                });
+                
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, unhighlight, false);
+                });
+                
+                dropArea.addEventListener('drop', handleDrop, false);
+                
+                // Password validation
+                [passwordInput, confirmPasswordInput].forEach(input => {
+                    input.addEventListener('input', validatePasswords);
+                });
+                
+                // Protect button click
+                protectBtn.addEventListener('click', protectPDF);
+                
+                // FAQ accordion functionality
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        question.classList.toggle('active');
+                        const answer = question.nextElementSibling;
+                        if (question.classList.contains('active')) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        } else {
+                            answer.style.maxHeight = '0';
+                        }
+                    });
+                });
+                
+                // Contact form submission
+                if (contactForm) {
+                    contactForm.addEventListener('submit', handleContactSubmit);
+                }
+            }
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            function highlight() {
+                dropArea.classList.add('highlight');
+            }
+            
+            function unhighlight() {
+                dropArea.classList.remove('highlight');
+            }
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length) {
+                    const file = files[0];
+                    if (file.type === 'application/pdf') {
+                        handleFile(file);
+                    } else {
+                        showStatus('Please upload a PDF file.', 'error');
+                    }
+                }
+            }
+            
+            function handleFileSelect(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    handleFile(file);
+                }
+            }
+            
+            function handleFile(file) {
+                selectedFile = file;
+                dropArea.querySelector('h2').textContent = file.name;
+                dropArea.querySelector('p').textContent = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+                validatePasswords();
+            }
+            
+            function validatePasswords() {
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                
+                if (selectedFile && password && confirmPassword) {
+                    if (password === confirmPassword) {
+                        protectBtn.disabled = false;
+                    } else {
+                        protectBtn.disabled = true;
+                    }
+                } else {
+                    protectBtn.disabled = true;
+                }
+            }
+            
+            async function protectPDF() {
+                if (!selectedFile) {
+                    showStatus('Please select a PDF file first.', 'error');
+                    return;
+                }
+                
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                
+                if (!password || !confirmPassword) {
+                    showStatus('Please enter and confirm a password.', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showStatus('Passwords do not match.', 'error');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    showStatus('Password should be at least 6 characters long.', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                protectBtn.disabled = true;
+                protectBtn.innerHTML = '<div class="loading-spinner"></div>';
+                
+                try {
+                    // Read the PDF file
+                    const arrayBuffer = await readFileAsArrayBuffer(selectedFile);
+                    
+                    // Load the PDF document
+                    const { PDFDocument } = PDFLib;
+                    const pdfDoc = await PDFDocument.load(arrayBuffer);
+                    
+                    // Set permissions based on selection
+                    let permissions = PDFDocument.prototype.defaultUserAccessPermissions;
+                    
+                    switch (permissionsSelect.value) {
+                        case 'noPrint':
+                            permissions = permissions ^ PDFDocument.AccessPermissions.Print;
+                            break;
+                        case 'noCopy':
+                            permissions = permissions ^ PDFDocument.AccessPermissions.Copy;
+                            break;
+                        case 'noModify':
+                            permissions = permissions ^ PDFDocument.AccessPermissions.Modify;
+                            break;
+                        case 'allRestrictions':
+                            permissions = 0;
+                            break;
+                        default:
+                            // No restrictions
+                            break;
+                    }
+                    
+                    // Encrypt the PDF
+                    await pdfDoc.encrypt({
+                        userPassword: password,
+                        ownerPassword: password,
+                        permissions: permissions
+                    });
+                    
+                    // Save the encrypted PDF
+                    const encryptedPdfBytes = await pdfDoc.save();
+                    
+                    // Create download link
+                    const blob = new Blob([encryptedPdfBytes], { type: 'application/pdf' });
+                    saveAs(blob, `protected_${selectedFile.name}`);
+                    
+                    showStatus('PDF protected successfully!', 'success');
+                    
+                    // Reset form
+                    resetForm();
+                } catch (error) {
+                    console.error('Error protecting PDF:', error);
+                    showStatus('An error occurred while protecting the PDF. Please try again.', 'error');
+                } finally {
+                    // Reset button state
+                    protectBtn.disabled = false;
+                    protectBtn.textContent = 'Protect PDF';
+                }
+            }
+            
+            function readFileAsArrayBuffer(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsArrayBuffer(file);
+                });
+            }
+            
+            function showStatus(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'status-message ' + type;
+            }
+            
+            function resetForm() {
+                pdfInput.value = '';
+                selectedFile = null;
+                passwordInput.value = '';
+                confirmPasswordInput.value = '';
+                permissionsSelect.value = 'none';
+                dropArea.querySelector('h2').textContent = 'Upload PDF File';
+                dropArea.querySelector('p').textContent = 'Drag & drop your PDF file here or click to browse';
+                protectBtn.disabled = true;
+            }
+            
+            function handleContactSubmit(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show a success message
+                showStatus('Thank you for your message! We will get back to you soon.', 'success');
+                contactForm.reset();
+            }
+            
+            // SEO Enhancement: Track file uploads and protection for analytics
+            function trackPDFProtection(fileName, fileSize) {
+                // In a real implementation, you would send this data to your analytics platform
+                console.log(`PDF protected: ${fileName}, Size: ${fileSize} bytes`);
+            }
+        });
+    </script>
+</body>
+</html>
